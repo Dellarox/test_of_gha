@@ -20,8 +20,8 @@ jobs:
                 tags: test_image
                 push: false
 
-            - uses: addnab/docker-run-action@v3
-              with:
-                image: test_image
+#             - uses: addnab/docker-run-action@v3
+#               with:
+#                 image: test_image
                 
             - run: docker run test_image
