@@ -1,4 +1,4 @@
-name: test of github actions
+name: docker test of github actions
 
 on:
     push:
@@ -6,12 +6,14 @@ on:
 
 jobs:
     test:
-        name: test of gha
+        name: docker test of gha
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repo
               uses: actions/checkout@v3
 
-            - name: Print text
-              run: |
-                python test.py
+            - name: Build docker
+              run: docker build . --tag test_image
+
+            - name: Run docker
+              run: docker run test_image
