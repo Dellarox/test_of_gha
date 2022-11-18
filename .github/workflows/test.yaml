@@ -23,4 +23,5 @@ jobs:
             - uses: addnab/docker-run-action@v3
               with:
                 image: test_image
-                run: python test.py
+                
+            - run: docker run test_image
