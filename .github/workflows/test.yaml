@@ -12,8 +12,16 @@ jobs:
             - name: Checkout repo
               uses: actions/checkout@v3
 
+            - name: Setup environment
+              uses: docker/setup-buildx-action@v2
+
             - name: Build docker
-              run: docker build . --tag test_image
+              uses: docker/build-push-action@v3
+              with:
+                  push: false
+                  tags: test_image
 
             - name: Run docker
-              run: docker run test_image
+              uses: addnab/docker-run-action@v3
+              with:
+                  image: test_image
